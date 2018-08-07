@@ -11,22 +11,49 @@ var averageCookiesPerHour = function() {
   for(var hour in storeHours) {
     var cookiesPurchasedEachHour = Math.floor(this.generateRandomNumber() * this.avgCookiesPerCustomer);
     this.totalCookiesForTheDay += cookiesPurchasedEachHour;
-    console.log(this.totalCookiesForTheDay);
-    this.simulatedAmountsOfCookiesPurchased.push(storeHours[hour] + ': ' + cookiesPurchasedEachHour + ' cookies');
+    this.simulatedAmountsOfCookiesPurchased.push(`${storeHours[hour]}: ${cookiesPurchasedEachHour} cookies`);
   }
-  this.simulatedAmountsOfCookiesPurchased.push('Total: ' + this.totalCookiesForTheDay + ' cookies');
+  this.simulatedAmountsOfCookiesPurchased.push(`Total: ${this.totalCookiesForTheDay} cookies`);
 };
+
+// var averageCookiesPerHour = function () {
+//   var cookiesPurchasedEachHour = Math.floor(this.generateRandomNumber() * this.avgCookiesPerCustomer);
+//   storeHours.forEach(function(store) {
+//     var cookiesPurchasedEachHour = Math.floor(this.generateRandomNumber() * this.avgCookiesPerCustomer);
+//     this.totalCookiesForTheDay += cookiesPurchasedEachHour;
+//     this.simulatedAmountsOfCookiesPurchased.push(`${store}: ${cookiesPurchasedEachHour} cookies`);
+//   });
+  // this.simulatedAmountsOfCookiesPurchased.push(`Total: ${this.totalCookiesForTheDay} cookies`);
+// };
 
 var displayTableData = function() {
   var storeInfoElement = document.getElementById(this.name);
-  for(var el in this.simulatedAmountsOfCookiesPurchased) {
+  this.simulatedAmountsOfCookiesPurchased.forEach(function(cookieValue){
     var createLiEl = document.createElement('li');
-    createLiEl.textContent = this.simulatedAmountsOfCookiesPurchased[el];
+    createLiEl.textContent = cookieValue;
     storeInfoElement.appendChild(createLiEl);
-  }
+  });
 };
 
 //object literals for each store
+var CreateStore = function(minHourlyCustomers, maxHourlyCustomers, avgCookiesPerCustomer, totalCookiesForTheDay, name) {
+  this.minHourlyCustomers = minHourlyCustomers;
+  this.maxHourlyCustomers = maxHourlyCustomers;
+  this.avgCookiesPerCustomer = avgCookiesPerCustomer;
+  this.totalCookiesForTheDay = totalCookiesForTheDay;
+  this.simulatedAmountsOfCookiesPurchased = [];
+  this.name = name;
+};
+
+CreateStore.prototype = {
+  generateRandomNumber: generateRandomNumber,
+  averageCookiesPerHour: averageCookiesPerHour,
+  displayTableData: displayTableData
+};
+
+var starbucks = new CreateStore('34', '80', '9', 0, 'stars');
+console.log(starbucks.averageCookiesPerHour());
+
 var firstAndPike = {
   minHourlyCustomers: 23,
   maxHourlyCustomers: 65,

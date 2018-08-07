@@ -1,0 +1,90 @@
+body {
+  background-color: brown;
+  font-family: 'Helvetica', Verdana, Arial ;
+}
+
+.slogan {
+   text-align: center;
+   padding-top: 20px;
+   color: rgb(239, 119, 94);
+   font-size: 40px;
+   font-family: 'Inconsolata', cursive, Arial ;
+ }
+
+.main-img {
+   display: block;
+   margin: 0 auto;
+   background-color: white;
+   padding: 30px 35px 30px 35px;
+   border: 10px solid #333366;
+   border-radius: 15px;
+ }
+
+ .borders {
+   background-color: white;
+   padding: 30px 35px 30px 35px;
+   border: 10px solid #333366;
+   border-radius: 15px;
+   color: #333366;
+ }
+
+ /*.new-im {
+   width: 440px;
+   height: 301px;
+   float: right;
+   margin-right: 90px;
+   margin-top: 20px;
+ }*/
+
+ .company-name {
+   font-family: 'Chewy', cursive;
+   font-size: 90px;
+   text-align: center;
+   color:  #333366;
+   margin-bottom: 10px;
+ }
+
+ .locations {
+   list-style: none ;
+   text-align: center;
+ }
+
+.locations a {
+  font-size: 20px;
+  color: #B8860B;
+  font-weight: bolder;
+}
+
+ .new-head {
+   text-align: center;
+   font-family: 'Georgia', Times, cursive;
+   color: 	#8FBC8F;
+ }
+
+ ul.HorizontalButtons {
+  margin-left: 0;
+  padding-left: 0;
+}
+ul.HorizontalButtons li {
+  font-size: 15px;
+  color: white;
+  display: inline;
+  margin: 2px;
+  padding: 0;
+
+}
+ul.HorizontalButtons li a {
+  text-decoration: none
+}
+ul.HorizontalButtons li a:hover {
+  background-color: white;
+}
+
+a {
+  color: #333366;
+}
+.hrs-info h1, h4 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+

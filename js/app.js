@@ -14,8 +14,9 @@ var firstAndPike = {
     for(var hour in storeHours) {
       var cookiesPurchasedEachHour = Math.floor(this.generateRandomNumber() * this.avgCookiesPerCustomer);
       this.totalCookiesForTheDay += cookiesPurchasedEachHour;
-      this.simulatedAmountsOfCookiesPurchased.push(cookiesPurchasedEachHour);
+      this.simulatedAmountsOfCookiesPurchased.push(storeHours[hour] + ': ' + cookiesPurchasedEachHour + ' cookies');
     }
+    this.simulatedAmountsOfCookiesPurchased.push('Total: ' + this.totalCookiesForTheDay + ' cookies');
   }
 };
 
@@ -33,8 +34,9 @@ var seaTacAirport = {
     for(var hour in storeHours) {
       var cookiesPurchasedEachHour = Math.floor(this.generateRandomNumber() * this.avgCookiesPerCustomer);
       this.totalCookiesForTheDay += cookiesPurchasedEachHour;
-      this.simulatedAmountsOfCookiesPurchased.push(cookiesPurchasedEachHour);
+      this.simulatedAmountsOfCookiesPurchased.push(storeHours[hour] + ': ' + cookiesPurchasedEachHour + ' cookies');
     }
+    this.simulatedAmountsOfCookiesPurchased.push('Total: ' + this.totalCookiesForTheDay + ' cookies');
   }
 };
 
@@ -51,8 +53,9 @@ var seattleCenter = {
     for(var hour in storeHours) {
       var cookiesPurchasedEachHour = Math.floor(this.generateRandomNumber() * this.avgCookiesPerCustomer);
       this.totalCookiesForTheDay += cookiesPurchasedEachHour;
-      this.simulatedAmountsOfCookiesPurchased.push(cookiesPurchasedEachHour);
+      this.simulatedAmountsOfCookiesPurchased.push(storeHours[hour] + ': ' + cookiesPurchasedEachHour + ' cookies');
     }
+    this.simulatedAmountsOfCookiesPurchased.push('Total: ' + this.totalCookiesForTheDay + ' cookies');
   }
 };
 
@@ -69,8 +72,9 @@ var capitolHill = {
     for(var hour in storeHours) {
       var cookiesPurchasedEachHour = Math.floor(this.generateRandomNumber() * this.avgCookiesPerCustomer);
       this.totalCookiesForTheDay += cookiesPurchasedEachHour;
-      this.simulatedAmountsOfCookiesPurchased.push(cookiesPurchasedEachHour);
+      this.simulatedAmountsOfCookiesPurchased.push(storeHours[hour] + ': ' + cookiesPurchasedEachHour + ' cookies');
     }
+    this.simulatedAmountsOfCookiesPurchased.push('Total: ' + this.totalCookiesForTheDay + ' cookies');
   }
 };
 
@@ -87,14 +91,12 @@ var alki = {
     for(var hour in storeHours) {
       var cookiesPurchasedEachHour = Math.floor(this.generateRandomNumber() * this.avgCookiesPerCustomer);
       this.totalCookiesForTheDay += cookiesPurchasedEachHour;
-      this.simulatedAmountsOfCookiesPurchased.push(cookiesPurchasedEachHour);
+      console.log(this.totalCookiesForTheDay);
+      this.simulatedAmountsOfCookiesPurchased.push(storeHours[hour] + ': ' + cookiesPurchasedEachHour + ' cookies');
     }
+    this.simulatedAmountsOfCookiesPurchased.push('Total: ' + this.totalCookiesForTheDay + ' cookies');
   }
 };
-
-for(var el in firstAndPike.simulatedAmountsOfCookiesPurchased) {
-  console.log(firstAndPike.simulatedAmountsOfCookiesPurchased[el]);
-}
 
 //function invocations
 var main = function() {
@@ -106,3 +108,39 @@ var main = function() {
 };
 
 main();
+
+//creating li tags for store object properties and appending them.
+var storeInfoElement = document.getElementById('pike-store-info');
+for(var el in firstAndPike.simulatedAmountsOfCookiesPurchased) {
+  var createLiEl = document.createElement('li');
+  createLiEl.textContent = firstAndPike.simulatedAmountsOfCookiesPurchased[el];
+  storeInfoElement.appendChild(createLiEl);
+}
+
+var storeInfoElement = document.getElementById('seatac-store-info');
+for(var el in seaTacAirport.simulatedAmountsOfCookiesPurchased) {
+  var createLiEl = document.createElement('li');
+  createLiEl.textContent = seaTacAirport.simulatedAmountsOfCookiesPurchased[el];
+  storeInfoElement.appendChild(createLiEl);
+}
+
+var storeInfoElement = document.getElementById('seattlecenter-store-info');
+for(var el in seattleCenter.simulatedAmountsOfCookiesPurchased) {
+  var createLiEl = document.createElement('li');
+  createLiEl.textContent = seattleCenter.simulatedAmountsOfCookiesPurchased[el];
+  storeInfoElement.appendChild(createLiEl);
+}
+
+var storeInfoElement = document.getElementById('capitolhill-store-info');
+for(var el in capitolHill.simulatedAmountsOfCookiesPurchased) {
+  var createLiEl = document.createElement('li');
+  createLiEl.textContent = capitolHill.simulatedAmountsOfCookiesPurchased[el];
+  storeInfoElement.appendChild(createLiEl);
+}
+
+var storeInfoElement = document.getElementById('alki-store-info');
+for(var el in alki.simulatedAmountsOfCookiesPurchased) {
+  var createLiEl = document.createElement('li');
+  createLiEl.textContent = alki.simulatedAmountsOfCookiesPurchased[el];
+  storeInfoElement.appendChild(createLiEl);
+}

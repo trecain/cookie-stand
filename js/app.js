@@ -90,16 +90,11 @@ var alki = {
 
 //function invocations
 var main = function() {
-  firstAndPike.averageCookiesPerHour();
-  firstAndPike.displayTableData();
-  seaTacAirport.averageCookiesPerHour();
-  seaTacAirport.displayTableData();
-  seattleCenter.averageCookiesPerHour();
-  seattleCenter.displayTableData();
-  capitolHill.averageCookiesPerHour();
-  capitolHill.displayTableData();
-  alki.averageCookiesPerHour();
-  alki.displayTableData();
+  var storesArray = [firstAndPike, seaTacAirport, seattleCenter, capitolHill, alki];
+  storesArray.forEach(function(store) {
+    store.averageCookiesPerHour();
+    store.displayTableData();
+  });
 };
 
 main();

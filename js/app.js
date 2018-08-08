@@ -1,7 +1,7 @@
 'use strict';
 
 
-var storeHours = ['6am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
+var storeHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 
 
 //helper functions to populate the list
@@ -14,25 +14,17 @@ var averageCookiesPerHour = function() {
   for(var hour in storeHours) {
     var cookiesPurchasedEachHour = Math.floor(this.generateRandomNumber() * this.avgCookiesPerCustomer);
     this.totalCookiesForTheDay += cookiesPurchasedEachHour;
-    this.simulatedAmountsOfCookiesPurchased.push(`${storeHours[hour]}: ${cookiesPurchasedEachHour} cookies`);
+    this.simulatedAmountsOfCookiesPurchased.push(cookiesPurchasedEachHour);
   }
-  this.simulatedAmountsOfCookiesPurchased.push(`Total: ${this.totalCookiesForTheDay} cookies`);
+  this.simulatedAmountsOfCookiesPurchased.push(this.totalCookiesForTheDay);
 };
 
-// var averageCookiesPerHour = function () {
-//   var cookiesPurchasedEachHour = Math.floor(this.generateRandomNumber() * this.avgCookiesPerCustomer);
-//   storeHours.forEach(function(store) {
-//     var cookiesPurchasedEachHour = Math.floor(this.generateRandomNumber() * this.avgCookiesPerCustomer);
-//     this.totalCookiesForTheDay += cookiesPurchasedEachHour;
-//     this.simulatedAmountsOfCookiesPurchased.push(`${store}: ${cookiesPurchasedEachHour} cookies`);
-//   });
-  // this.simulatedAmountsOfCookiesPurchased.push(`Total: ${this.totalCookiesForTheDay} cookies`);
-// };
 
+// displayTableHeaders();
 var displayTableData = function() {
   var storeInfoElement = document.getElementById(this.name);
   this.simulatedAmountsOfCookiesPurchased.forEach(function(cookieValue){
-    var createLiEl = document.createElement('li');
+    var createLiEl = document.createElement('td');
     createLiEl.textContent = cookieValue;
     storeInfoElement.appendChild(createLiEl);
   });
@@ -58,6 +50,7 @@ CreateStore.prototype = {
 };
 
 
+//setting instances of CreateStore object constructor
 var firstAndPike = new CreateStore(23, 65, 6.5, 'pike-store-info');
 var seaTacAirport = new CreateStore(3, 24, 1.2, 'seatac-store-info');
 var seattleCenter = new CreateStore(11, 38, 3.7, 'seattlecenter-store-info');
@@ -65,7 +58,7 @@ var capitolHill = new CreateStore(20, 38, 2.3, 'capitolhill-store-info');
 var alki = new CreateStore(2, 16, 4.6, 'alki-store-info');
 
 
-// function invocations
+//function invocations of averageCookies and displayTable
 var main = function() {
   var storesArray = [firstAndPike, seaTacAirport, seattleCenter, capitolHill, alki];
   storesArray.forEach(function(store) {

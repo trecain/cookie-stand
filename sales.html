@@ -7,20 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/skeleton.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/sales.css"> -->
     <title>Cookies Sales</title>
 </head>
 
 <body>
-    <h1>The Salmon Cookie Shop</h1>
+    <!-- <div class="header">
+        <img src="images/salmon.png" class="u-max-full-width" alt="salmon" />
+        <h1 class="u-max-full-width">The Salmon Cookie Shop</h1>
+    </div> -->
     <table class="u-full-width">
         <thead>
             <tr>
-                <!-- <th>1st and Pike</th>
-                <th>SeaTac Airport</th>
-                <th>Seattle Center</th>
-                <th>Capitol Hill</th>
-                <th>Alki</th> -->
                 <th>Location</th>
+                <th>6:00 am</th>
+                <th>7:00 am</th>
                 <th>8:00 am</th>
                 <th>9:00 am</th>
                 <th>10:00 am</th>
@@ -32,27 +33,33 @@
                 <th>4:00 pm</th>
                 <th>5:00 pm</th>
                 <th>6:00 pm</th>
+                <th>7:00 pm</th>
+                <th>8:00 pm</th>
                 <th>Totals</th>
             </tr>
         </thead>
         <tbody>
-            
+            <tr id="pike-store-info">
+                <td>1st and Pike</td>
+            </tr>
+            <tr id="seatac-store-info">
+                <td>SeaTac Center</td>
+            </tr>
+            <tr id="seattlecenter-store-info">
+                <td>Seattle Center</td>
+            </tr>
+            <tr id="capitolhill-store-info">
+                <td>Capitol Hill</td>
+            </tr>
+            <tr id="alki-store-info">
+                <td>Alki</td>
+            </tr>
+            <tr>
+                <td>Day Totals:</td>
+            </tr>
         </tbody>
     </table>
-    <h3>1st and Pike</h3>
-    <ul id='pike-store-info'></ul>
 
-    <h3>SeaTac Airport</h3>
-    <ul id='seatac-store-info'></ul>
-
-    <h3>Seattle Center</h3>
-    <ul id='seattlecenter-store-info'></ul>
-
-    <h3>Capitol Hill</h3>
-    <ul id='capitolhill-store-info'></ul>
-    
-    <h3>Alki</h3>
-    <ul id='alki-store-info'></ul>
     <script src="js/app.js"></script>
 </body>
 

@@ -17,7 +17,7 @@
     </header>
     <div class="tablestyle">
         <h1 class="title">Salmon Cookies</h1>
-        <table class="u-full-width">
+        <table id="deleteTable" class="u-full-width">
             <thead>
                 <tr>
                     <th>Location</th>
@@ -39,28 +39,8 @@
                     <th>Totals</th>
                 </tr>
             </thead>
-            <tbody id="tbody">
-                <tr id="pike-store-info">
-                    <td>1st and Pike</td>
-                </tr>
-                <tr id="seatac-store-info">
-                    <td>SeaTac Center</td>
-                </tr>
-                <tr id="seattlecenter-store-info">
-                    <td>Seattle Center</td>
-                </tr>
-                <tr id="capitolhill-store-info">
-                    <td>Capitol Hill</td>
-                </tr>
-                <tr id="alki-store-info">
-                    <td>Alki</td>
-                </tr>
-                <tr id="formtotals">
-                </tr>
-                <tr id="daytotals">
-                    <td>Day Totals:</td>
-                </tr>
-            </tbody>
+            <tbody id="tbodyTable"></tbody>
+            <tfoot id="tfootTable"></tfoot>
         </table>
         <form id="storeForm">
             <fieldset>
@@ -80,5 +60,3 @@
 </body>
 
 </html>
-
-var CreateStore = function(minHourlyCustomers, maxHourlyCustomers, avgCookiesPerCustomer, name, column) {

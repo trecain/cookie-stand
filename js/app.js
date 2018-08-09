@@ -36,9 +36,10 @@ function names() {
 }
 
 
-var averageCookiesPerHour = function() {
+var averageCookiesPerHour = function(max, min, avg) {
   for(var hour in storeHours) {
-    var cookiesPurchasedEachHour = Math.floor(generateRandomNumber(this.maxHourlyCustomers, this.minHourlyCustomers) * this.avgCookiesPerCustomer);
+    console.log('avg number', generateRandomNumber(max, min));
+    var cookiesPurchasedEachHour = Math.floor(generateRandomNumber(max, min) * avg);
     this.totalCookiesForTheDay += cookiesPurchasedEachHour;
     this.simulatedAmountsOfCookiesPurchased.push(cookiesPurchasedEachHour);
   }
@@ -49,7 +50,6 @@ var averageCookiesPerHour = function() {
 // displayTableHeaders();
 var displayTableData = function() {
   var storeInfoElement = document.getElementById(this.name);
-  console.log('sim cook', this.simulatedAmountsOfCookiesPurchased.length);
   this.simulatedAmountsOfCookiesPurchased.forEach(function(cookieValue){
     var createLiEl = document.createElement('td');
     createLiEl.textContent = cookieValue;
@@ -60,7 +60,7 @@ var displayTableData = function() {
 
 
 //object literals for each store
-var CreateStore = function(minHourlyCustomers, maxHourlyCustomers, avgCookiesPerCustomer, name, column) {
+var CreateStore = function(minHourlyCustomers, maxHourlyCustomers, avgCookiesPerCustomer, name) {
   this.minHourlyCustomers = minHourlyCustomers;
   this.maxHourlyCustomers = maxHourlyCustomers;
   this.avgCookiesPerCustomer = avgCookiesPerCustomer;
@@ -86,12 +86,24 @@ var capitolHill = new CreateStore(20, 38, 2.3, 'capitolhill-store-info');
 var alki = new CreateStore(2, 16, 4.6, 'alki-store-info');
 
 
+//add store to table list
+var formEl = document.getElementById('storeForm');
+formEl.addEventListener('submit', function(el) {
+  el.preventDefault();
+  console.log('they submitted the form');
+  var storeCreatedFromForm = new CreateStore( Number(el.target.minHourly.value), Number(el.target.maxHourly.value), Number(el.target.avgHourly.value, el.target.storeName.value));
+  storeCreatedFromForm.averageCookiesPerHour(storeCreatedFromForm.maxHourlyCustomers, storeCreatedFromForm.minHourlyCustomers, storeCreatedFromForm.avgCookiesPerCustomer);
+  console.log(storeCreatedFromForm);
+
+});
+
+
 //function invocations of averageCookies and displayTable
 var storesArray = [firstAndPike, seaTacAirport, seattleCenter, capitolHill, alki];
 var main = function() {
 
   storesArray.forEach(function(store) {
-    store.averageCookiesPerHour();
+    store.averageCookiesPerHour(store.maxHourlyCustomers, store.minHourlyCustomers, store.avgCookiesPerCustomer);
     store.displayTableData();
   });
   names();

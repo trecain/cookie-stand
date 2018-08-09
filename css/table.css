@@ -1,0 +1,18 @@
+body{
+    background-color: #e6e6e6;
+}
+
+.title{
+    text-align: center;
+    font-weight: bold;
+}
+
+.tablestyle {
+    background-color: #fff;
+    width: 90%; 
+    padding: 2%;
+    margin: 2%;
+    box-shadow: 1px 1px 10px #bfbfbf;
+    border-radius: 5px;
+}
+  

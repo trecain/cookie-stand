@@ -102,6 +102,7 @@ formEl.addEventListener('submit', function(el) {
   storeCreatedFromForm.averageCookiesPerHour(storeCreatedFromForm.maxHourlyCustomers, storeCreatedFromForm.minHourlyCustomers, storeCreatedFromForm.avgCookiesPerCustomer);
   storeCreatedFromForm.displayTableData();
   populateTheTfooterWithDailyTotals();
+  formEl.reset();
 });
 
 

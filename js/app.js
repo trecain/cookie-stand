@@ -32,6 +32,20 @@ var displayTableData = function() {
 };
 
 
+//add store to table list
+var createAndAddNewUserToTable = document.getElementById('storeForm');
+createAndAddNewUserToTable.addEventListener('submit', function(el) {
+  el.preventDefault();
+  // document.getElementById('deleteTable').deleteTFoot();
+  var storeCreatedFromForm = new CreateStore( Number(el.target.minHourly.value), Number(el.target.maxHourly.value), Number(el.target.avgHourly.value), el.target.storeName.value);
+  individualStoresArray.push(storeCreatedFromForm);
+  storeCreatedFromForm.averageCookiesPerStoreHours(storeCreatedFromForm.maxHourlyCustomers, storeCreatedFromForm.minHourlyCustomers, storeCreatedFromForm.avgCookiesPerCustomer);
+  storeCreatedFromForm.displayTableData();
+  populateTheTfooterWithDailyTotals();
+  createAndAddNewUserToTable.reset();
+});
+
+
 //grabs daily totals off the dom and adds them to the table
 var calculateAndCreateDailyTotals = function (column) {
   var tableBody = document.getElementsByTagName('tbody').item(0);
@@ -88,20 +102,6 @@ var seaTacAirport = new CreateStore(3, 24, 1.2, 'SeaTac Center');
 var seattleCenter = new CreateStore(11, 38, 3.7, 'Seattle Center');
 var capitolHill = new CreateStore(20, 38, 2.3, 'Capitol Hill');
 var alki = new CreateStore(2, 16, 4.6, 'Alki');
-
-
-//add store to table list
-var createAndAddNewUserToTable = document.getElementById('storeForm');
-createAndAddNewUserToTable.addEventListener('submit', function(el) {
-  el.preventDefault();
-  // document.getElementById('deleteTable').deleteTFoot();
-  var storeCreatedFromForm = new CreateStore( Number(el.target.minHourly.value), Number(el.target.maxHourly.value), Number(el.target.avgHourly.value), el.target.storeName.value);
-  individualStoresArray.push(storeCreatedFromForm);
-  storeCreatedFromForm.averageCookiesPerStoreHours(storeCreatedFromForm.maxHourlyCustomers, storeCreatedFromForm.minHourlyCustomers, storeCreatedFromForm.avgCookiesPerCustomer);
-  storeCreatedFromForm.displayTableData();
-  populateTheTfooterWithDailyTotals();
-  createAndAddNewUserToTable.reset();
-});
 
 
 //function invocations of averageCookies and displayTable

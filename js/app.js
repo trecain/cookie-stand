@@ -1,17 +1,15 @@
 'use strict';
 
 
-var storeHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
-
-
 //helper functions to populate the list
 var generateRandomNumber = function(max, min) {
   return Math.floor((Math.random() * (max - min + 1) + min));
 };
 
 
-var averageCookiesPerHour = function(max, min, avg) {
-  for(var hour in storeHours) {  
+var averageCookiesPerStoreHours = function(max, min, avg) {
+  var storeHoursOfOperation = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
+  for(var i = 0; i < storeHoursOfOperation.length; i++) {
     var cookiesPurchasedEachHour = Math.floor(generateRandomNumber(max, min) * avg);
     this.totalCookiesForTheDay += cookiesPurchasedEachHour;
     this.simulatedAmountsOfCookiesPurchased.push(cookiesPurchasedEachHour);
@@ -23,44 +21,44 @@ var averageCookiesPerHour = function(max, min, avg) {
 // displayTableHeaders();
 var displayTableData = function() {
   var storeInfoElement = document.getElementById('tbodyTable');
-  var createTrEl = document.createElement('tr');
-  createTrEl.textContent = this.name;
-  storeInfoElement.appendChild(createTrEl);
-  this.simulatedAmountsOfCookiesPurchased.forEach(function(cookieValue){
-    var createLiEl = document.createElement('td');
-    createLiEl.textContent = cookieValue;
-    createTrEl.appendChild(createLiEl);
+  var createTrElement = document.createElement('tr');
+  createTrElement.textContent = this.name;
+  storeInfoElement.appendChild(createTrElement);
+  this.simulatedAmountsOfCookiesPurchased.forEach(function(valueOfCookie){
+    var createLiElement = document.createElement('td');
+    createLiElement.textContent = valueOfCookie;
+    createTrElement.appendChild(createLiElement);
   });
 };
 
 
 //grabs daily totals off the dom and adds them to the table
-var dailyTotalsFunction = function (column) {
+var calculateAndCreateDailyTotals = function (column) {
   var tableBody = document.getElementsByTagName('tbody').item(0);
-  var whichColumn = column;
-  var total = 0;
-  for(var t = 0; t < storesArray.length; t++) {
+  var specificColumnOnTable = column;
+  var calculatedColumnTotal = 0;
+  for(var t = 0; t < individualStoresArray.length; t++) {
     var thisTrElem = tableBody.rows[t];
-    var thisTdElem = thisTrElem.cells[whichColumn];
-    total += Number(thisTdElem.textContent);
+    var thisTdElem = thisTrElem.cells[specificColumnOnTable];
+    calculatedColumnTotal += Number(thisTdElem.textContent);
   }
-  var createLiEl = document.createElement('td');
-  createLiEl.textContent = total;
-  return createLiEl;
+  var createLiElement = document.createElement('td');
+  createLiElement.textContent = calculatedColumnTotal;
+  return createLiElement;
 };
 
 
 //iteration that populates the footer
 function populateTheTfooterWithDailyTotals() {
-  var createTotEl = document.createElement('tr');
-  var storeInfoElementTfoot = document.getElementById('tfootTable');
-  if(storeInfoElementTfoot.firstChild !== null) {
-    storeInfoElementTfoot.removeChild(storeInfoElementTfoot.firstChild);
+  var createTotalElement = document.createElement('tr');
+  var storeInfoElementForTfoot = document.getElementById('tfootTable');
+  if(storeInfoElementForTfoot.firstChild !== null) {
+    storeInfoElementForTfoot.removeChild(storeInfoElementForTfoot.firstChild);
   }
-  createTotEl.textContent = 'Total:';
-  storeInfoElementTfoot.appendChild(createTotEl);
+  createTotalElement.textContent = 'Total:';
+  storeInfoElementForTfoot.appendChild(createTotalElement);
   for (var i = 0; i < 16; i++) {
-    createTotEl.appendChild(dailyTotalsFunction(i));
+    createTotalElement.appendChild(calculateAndCreateDailyTotals(i));
   }
 }
 
@@ -79,7 +77,7 @@ var CreateStore = function(minHourlyCustomers, maxHourlyCustomers, avgCookiesPer
 //added methods on object constructor prototype
 CreateStore.prototype = {
   generateRandomNumber: generateRandomNumber,
-  averageCookiesPerHour: averageCookiesPerHour,
+  averageCookiesPerStoreHours: averageCookiesPerStoreHours,
   displayTableData: displayTableData
 };
 
@@ -93,24 +91,24 @@ var alki = new CreateStore(2, 16, 4.6, 'Alki');
 
 
 //add store to table list
-var formEl = document.getElementById('storeForm');
-formEl.addEventListener('submit', function(el) {
+var createAndAddNewUserToTable = document.getElementById('storeForm');
+createAndAddNewUserToTable.addEventListener('submit', function(el) {
   el.preventDefault();
   // document.getElementById('deleteTable').deleteTFoot();
   var storeCreatedFromForm = new CreateStore( Number(el.target.minHourly.value), Number(el.target.maxHourly.value), Number(el.target.avgHourly.value), el.target.storeName.value);
-  storesArray.push(storeCreatedFromForm);
-  storeCreatedFromForm.averageCookiesPerHour(storeCreatedFromForm.maxHourlyCustomers, storeCreatedFromForm.minHourlyCustomers, storeCreatedFromForm.avgCookiesPerCustomer);
+  individualStoresArray.push(storeCreatedFromForm);
+  storeCreatedFromForm.averageCookiesPerStoreHours(storeCreatedFromForm.maxHourlyCustomers, storeCreatedFromForm.minHourlyCustomers, storeCreatedFromForm.avgCookiesPerCustomer);
   storeCreatedFromForm.displayTableData();
   populateTheTfooterWithDailyTotals();
-  formEl.reset();
+  createAndAddNewUserToTable.reset();
 });
 
 
 //function invocations of averageCookies and displayTable
-var storesArray = [firstAndPike, seaTacAirport, seattleCenter, capitolHill, alki];
+var individualStoresArray = [firstAndPike, seaTacAirport, seattleCenter, capitolHill, alki];
 var main = function() {
-  storesArray.forEach(function(store) {
-    store.averageCookiesPerHour(store.maxHourlyCustomers, store.minHourlyCustomers, store.avgCookiesPerCustomer);
+  individualStoresArray.forEach(function(store) {
+    store.averageCookiesPerStoreHours(store.maxHourlyCustomers, store.minHourlyCustomers, store.avgCookiesPerCustomer);
     store.displayTableData();
   });
   populateTheTfooterWithDailyTotals();

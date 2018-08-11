@@ -53,6 +53,11 @@ body {
    color: 	#8FBC8F;
  }
 
+ #formCss {
+   width: 80%;
+   border: #333366 solid 3px;
+ }
+
  ul.HorizontalButtons {
   margin-left: 0;
   padding-left: 0;

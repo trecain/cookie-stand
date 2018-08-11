@@ -16,3 +16,28 @@ body{
     border-radius: 5px;
 }
   
+#formCss {
+    width: 90%;
+    padding: 2%;
+    margin: 2%;
+    border: 2px solid white;
+    border-radius: 5px;
+    background-color: #2C3539;
+    color: #e6e6e6;
+}
+
+input.gray {
+    color: #e6e6e6;
+    position: relative;
+    left: 354px;
+}
+
+#storeForm{
+    margin-left: 25%;
+    padding-top: 50px;
+}
+
+label{
+    display: inline-block;
+    min-width: 350px;
+}
